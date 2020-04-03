@@ -51,12 +51,12 @@
     }
 
     function speedRead() {
-        var timerInterval = setInterval(function() {
+        var speedInterval = setInterval(function() {
             timeEl.textContent = poem[poemPtr];
             poemPtr++;
 
             if(poemPtr === (poem.length - 1)) {
-                clearInterval(timerInterval);
+                clearInterval(speedInterval);
                 return;
             }
 
