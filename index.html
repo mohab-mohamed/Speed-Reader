@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Speed Read</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap/styles.css">
+</head>
+<body>
+    
+<div class="jumboContainer">
+<div class="container">
+    <div class="jumbotron">
+        <!-- <div class="titleContainer">
+            <h1>Password Generator</h1>
+        </div> -->
+        <div class="buttonContainer">
+            <p><button href=""  id="speedRead" class="btn btn-success btn-lg">Speed Read</button></p>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <!-- <div class="titleContainer">
+            <h1>Password Generator</h1>
+        </div> -->
+        <div class="buttonContainer">
+            <!-- <p><button href=""  id="generateButton" class="btn btn-success btn-lg">Generate Password</button></p> -->
+            <h1 class="changingHeader"></h1>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    window.document.getElementById("speedRead").addEventListener("click", prepareRead);
+    var secondsLeft = 5;
+    var poem = "Some say the world will end in 🔥, Some say in ice. From what I’ve tasted of desire, I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate. To say that for destruction ice, Is also great, And would suffice.";
+    poem = poem.split(" ")
+    var poemPtr = 0
+
+    var timeEl = document.querySelector(".changingHeader");
+
+    function prepareRead() {
+        
+        var timerInterval = setInterval(function() {
+            timeEl.textContent = secondsLeft;
+            secondsLeft--;
+
+            if(secondsLeft === 0) {
+                clearInterval(timerInterval);
+                speedRead();
+            }
+
+        }, 1000);
+
+    }
+
+    function speedRead() {
+        var timerInterval = setInterval(function() {
+            timeEl.textContent = poem[poemPtr];
+            poemPtr++;
+
+            if(poemPtr === (poem.length - 1)) {
+                clearInterval(timerInterval);
+                return;
+            }
+
+        }, 1000);
+        return;
+    }
+</script>
+</body>
+</html>
